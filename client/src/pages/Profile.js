@@ -1,11 +1,13 @@
 import React from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import Auth from '../utils/auth';
 import FriendList from '../components/FriendList';
 import ThoughtList from '../components/ThoughtList';
+import ThoughtForm from '../components/ThoughtForm';
 import { ADD_FRIEND } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import Auth from '../utils/auth';
+import { Redirect, useParams } from 'react-router-dom';
+
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -71,6 +73,7 @@ const Profile = () => {
           />
         </div>
       </div>
+      <div className="mb-3">{!userParam && <ThoughtForm />}</div>
     </div>
   );
 };
